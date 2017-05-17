@@ -1,0 +1,23 @@
+@CHARSET "EUC-KR";
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: #dc85a4;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination a.current {
+    background-color: #bfca73;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}

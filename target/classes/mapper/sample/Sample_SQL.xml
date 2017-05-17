@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="sample">
+	
+	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+	     <![CDATA[
+	     SELECT IDX, TITLE, HIT_CNT, CREATE_DT, USER_ID, USER_NAME
+	     FROM K_BOARD_TEST
+	     WHERE DEL_GB = 'N'
+	     ORDER BY IDX DESC
+	     LIMIT 15 OFFSET #{page}
+	     ]]>
+    </select>
+    
+    <select id="selectLocationList" parameterType="hashmap" resultType="hashmap">
+	     <![CDATA[
+	     SELECT IDX, TITLE, CONTENT, FILE_PATH, ORIGIN_FILE_NAME, STORED_FILE_NAME, FILE_SIZE, CREATE_DT, LATITUDE, LONGITUDE, WRITER_ID
+	     FROM K_LOCATION
+	     ORDER BY IDX DESC
+	     LIMIT 5 OFFSET #{page}
+	     ]]>
+    </select>
+    
+    <select id="selectBoardListAllCnt" resultType="int">
+    	SELECT COUNT(*) as TOTAL_CNT
+    	FROM K_BOARD_TEST
+	    WHERE DEL_GB = 'N'
+	    ORDER BY IDX DESC
+    </select>
+    
+    <select id="selectLoactionListAllCnt" resultType="int">
+    	SELECT COUNT(*) as TOTAL_CNT
+    	FROM K_LOCATION
+	    ORDER BY IDX DESC
+    </select>
+    
+    <select id="selectBoardContents" parameterType="hashmap" resultType="hashmap">
+	     <![CDATA[
+	     SELECT IDX, TITLE, CONTENTS, HIT_CNT, CREATE_DT, USER_ID, USER_NAME
+	     FROM K_BOARD_TEST
+	     WHERE IDX = #{IDX}
+	     ]]>
+    </select>
+    
+    <select id="isMember" parameterType="hashmap" resultType="int">
+	     <![CDATA[
+	     SELECT COUNT(*) AS CNT
+	     FROM K_MEMBER
+	     WHERE ID = #{id}
+	     AND PWD = #{password}
+	     ]]>
+    </select>
+    
+    <select id="selectLoginInfo" parameterType="hashmap" resultType="hashmap">
+	     <![CDATA[
+	     SELECT ID, PWD, NAME
+	     FROM K_MEMBER
+	     WHERE ID = #{id}
+	     AND PWD = #{password}
+	     ]]>
+    </select>
+    
+    <insert id="insertMember">
+    	<![CDATA[
+    	INSERT INTO K_MEMBER
+    	(
+    		ID,
+    		PWD,
+    		NAME,
+    		BIRTHYEAR,
+    		BIRTHDATE,
+    		GENDER,
+    		POSTCODE,
+    		ADDRESS,
+    		ADDRESS_DETAIL,
+    		JOIN_DT
+    	)
+    	VALUES
+    	(
+    		#{id},
+    		#{password},
+    		#{name},
+    		#{birthyear},
+    		#{birthdate},
+    		#{gender},
+    		#{postcode},
+    		#{address},
+    		#{addressDetail},
+    		now()
+    	)
+    	]]>
+    </insert>
+    
+    <insert id="insertBoard">
+    	<![CDATA[
+    	INSERT INTO K_BOARD_TEST
+    	(
+    		TITLE,
+    		CONTENTS,
+    		CREATE_DT,
+    		USER_ID,
+    		USER_NAME
+    	)
+    	VALUES
+    	(
+    		#{title},
+    		#{contents},
+    		now(),
+    		#{user_id},
+    		#{user_name}
+    	)
+    	]]>
+    </insert> 
+    
+    <select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+	     <![CDATA[
+	     SELECT IDX, TITLE, CONTENTS, HIT_CNT, CREATE_DT, USER_ID, USER_NAME
+	     FROM K_BOARD_TEST
+	     WHERE IDX = #{idx}
+	     ]]>
+    </select>
+    
+    <update id="updateBoardHitCnt">
+    	<![CDATA[
+    	UPDATE K_BOARD_TEST 
+    	SET HIT_CNT = HIT_CNT + 1  
+    	WHERE IDX = #{idx}
+    	]]>
+    </update>
+    
+    <update id="updateBoard">
+    	<![CDATA[
+    	UPDATE K_BOARD_TEST 
+    	SET TITLE = #{title},
+    		CONTENTS = #{contents}
+    	WHERE IDX = #{idx}
+    	]]>
+    </update>
+    
+    <delete id="deleteBoard">
+    	<![CDATA[
+    	DELETE FROM K_BOARD_TEST
+    	WHERE IDX = #{idx}
+    	]]>
+    </delete>
+     
+     <update id="updateBoardDelState">
+     	<![CDATA[
+     	UPDATE K_BOARD_TEST 
+    	SET DEL_GB = 'Y'
+    	WHERE IDX = #{idx}
+     	]]>
+     </update>
+     
+     <insert id="insertMyLoaction">
+    	<![CDATA[
+    	INSERT INTO K_LOCATION
+    	(
+    		TITLE,
+    		CONTENT,
+    		FILE_PATH,
+    		ORIGIN_FILE_NAME,
+    		STORED_FILE_NAME,
+    		FILE_SIZE,
+    		CREATE_DT,
+    		LATITUDE,
+    		LONGITUDE,
+    		WRITER_ID
+    	)
+    	VALUES
+    	(
+    		#{title},
+    		#{content},
+    		#{filePath},
+    		#{original_file_name},
+    		#{stored_file_name},
+    		#{file_size},
+    		now(),
+    		#{latitude},
+    		#{longitude},
+    		#{writerId}
+    	)
+    	]]>
+    </insert>
+     
+</mapper>

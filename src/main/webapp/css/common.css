@@ -1,0 +1,131 @@
+@CHARSET "EUC-KR";
+
+.voldfont {
+    font-family: Impact, Charcoal, sans-serif;
+    color: #000000;
+}
+
+.center {
+    text-align: center;
+}
+
+.topper {
+	padding: 2em;
+    color: white;
+    background-color: #808080;
+    text-align: center;
+}
+
+.headerfooter {
+    padding: 1em;
+    color: white;
+    background-color: #000000;
+    clear: left;
+    text-align: center;
+}
+
+.movingBtn {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: #c0c0c0;
+	border: none;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 28px;
+	padding: 20px;
+	width: 200px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+}
+
+.movingBtn_pink {
+	background-color: #dc85a4;
+}
+
+.movingBtn_lime {
+	background-color: #bfca73;
+}
+
+.movingBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.movingBtn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.movingBtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+
+
+
+body {
+	font-size: 75%;
+}
+table.afternoon-session {
+	width: 100%;
+	table-layout: fixed;
+} 
+table.afternoon-session thead tr {
+	width: 100%;
+}
+table td {
+	text-align: center;
+}
+table.afternoon-session thead tr {
+	background-color: #bfca73;
+	color: #fff;
+	text-align: center;
+}
+.afternoon-session tbody td {
+	background-color: #ececec;
+}
+th, 
+td {
+	padding: 1em;
+	vertical-align: top;
+}
+@media only screen and (max-width: 650px) {
+	table.afternoon-session {
+		width: 100%;
+	} 
+	table.afternoon-session [data-cell-header]:before {
+		content: attr(data-cell-header);
+		display: block;
+position:absolute;
+/*top:0;*/
+left:0;
+    width:45%;
+		text-align: left;
+		background: #bfca73;
+		padding: 0.3em 0.6em;
+		color: #fff;
+    font-weight:bold;
+	} 
+	table.afternoon-session thead {
+		display: none;
+	} 
+	table.afternoon-session td {
+	position:relative;
+		display: block;
+padding:0.3em 0 0.3em 50%;
+margin-bottom:1px;
+	}
+	table.afternoon-session td:first-of-type {
+margin-top:10px;
+	}
+}
+

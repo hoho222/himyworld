@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="admin">
+
+    <insert id="insertFile">
+    	<![CDATA[
+    	INSERT INTO K_BANNER_INFO
+    	(
+    		FILE_PATH,
+            ORIGINAL_FILE_NAME,
+            STORED_FILE_NAME,
+            FILE_SIZE,
+            DISPLAY_YN,
+            ADMIN_ID,
+            CREATE_DT,
+            GO_URL,
+            STARTDATE,
+            ENDDATE
+    	)
+    	VALUES
+    	(
+    		#{filePath},
+    		#{original_file_name},
+    		#{stored_file_name},
+    		#{file_size},
+    		#{display_yn},
+    		#{admin_id},
+    		now(),
+    		#{go_url},
+    		#{startdate},
+    		#{enddate}
+    	)
+    	]]>
+    </insert> 
+    
+    <select id="selectBanner" parameterType="hashmap" resultType="hashmap">
+	     SELECT IDX, ORIGINAL_FILE_NAME, STORED_FILE_NAME, GO_URL, FILE_PATH, STARTDATE, ENDDATE
+	     FROM K_BANNER_INFO
+	     WHERE 1 = 1
+	     <if test="conPath != null and conPath == 'front'">
+	     	<![CDATA[
+		     AND DISPLAY_YN = 'Y'
+		     AND ENDDATE >= date(now())
+		     AND STARTDATE <= date(now())
+		     ]]>
+	     </if>
+	     ORDER BY IDX DESC;
+    </select>
+    
+    <delete id="deleteBanner">
+    	<![CDATA[
+    	DELETE FROM K_BANNER_INFO
+    	WHERE IDX = #{idx}
+    	]]>
+    </delete>
+   
+</mapper>

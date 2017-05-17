@@ -1,0 +1,136 @@
+@CHARSET "EUC-KR";
+
+/* ¹öÆ° */
+
+.btnBasic {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btnBasicSmall {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    height: 30px;
+    margin: 4px 2px;
+}
+
+.btnBasicRound {
+    background-color: #4CAF50; /* Green */
+    border-radius: 12px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.btnBasicRoundSmall {
+    background-color: #4CAF50; /* Green */
+    border-radius: 12px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    height: 20px;
+    width: 50px;
+}
+
+.btnBasic_blue {background-color: #008CBA;} /* Blue */
+.btnBasic_red {background-color: #f44336;} /* Red */ 
+.btnBasic_gray {background-color: #e7e7e7; color: black;} /* Gray */ 
+.btnBasic_black {background-color: #555555;} /* Black */
+.btnBasic_purple {background-color: #dc85a4;} /* purple */ 
+.btnBasic_lime {background-color: #c1d288;} /* lime */ 
+
+.btnBasic_purple:hover {
+    background-color: #c86288;
+}
+.btnBasic_lime:hover {
+    background-color: #aba063;
+}
+.btnBasic_red:hover {
+    background-color: #b7060b;
+}
+
+.btnLine {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btnLineSmall {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    height: 30px;
+    width: 80px;
+}
+
+.btnLine_green {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+    cursor: pointer;
+}
+
+.btnLine_blue {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+    cursor: pointer;
+}
+
+.btnLine_red {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #f44336;
+    cursor: pointer;
+}
+
+.btnLine_gray {
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    cursor: pointer;
+}
+
+.btnLine_black {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+    cursor: pointer;
+}

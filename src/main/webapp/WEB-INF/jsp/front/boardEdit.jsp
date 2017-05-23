@@ -56,7 +56,7 @@ function goBack() {
 						</tr>
 		                <tr style="border: solid 1px ;">
 			        		<th style="border: solid 1px ;">제목</th>
-			        		<td style="border: 1px solid;"><input type="text" id="contents" name="contents" value="${detailMap.CONTENTS}"/></td>
+			        		<td style="border: 1px solid;"><input type="text" id="title" name="title" value="${detailMap.TITLE}"/></td>
 						</tr>
 						<tr style="border: solid 1px ;">     
 							<th style="border: solid 1px ;">내용</th>

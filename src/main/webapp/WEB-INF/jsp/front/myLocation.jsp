@@ -10,6 +10,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<style>
+
+#jb-container {
+  height: 100%;
+  margin: 10px auto;
+  padding: 20px;
+  border: 1px solid #bcbcbc;
+}
+.jb-content {
+  height: 900px;
+  width:50%;
+  padding: 20px;
+  margin-bottom: 20px;
+  /* float: left; */
+  display: inline-block;
+  border: 1px solid #bcbcbc;
+}
+.jb-sidebar {
+  width:40%;
+  padding: 20px;
+  margin-bottom: 20px;
+  /* float: right; */
+  display: inline-block;
+}
+
+@media ( max-width: 480px ) {
+  #jb-container {
+    width: auto;
+  }
+  .jb-content {
+    float: none;
+    width: auto;
+  }
+  .jb-sidebar {
+    float: none;
+    width: auto;
+  }
+}
+
+</style>
+
 </head>
 <body>
 
@@ -20,101 +61,105 @@
 			<div class="center">
 				<div class="testimonial-head">
 					<h1><span>Build </span>Memory</h1>
+					<p>추억쌓기는 웹에 적합하게 제작되었습니다.<br> 웹에서 이용해주세요 :)</p>
 				</div>
 				<br>
-				<div id="map" style="width:800px;height:956.44px;float:left"></div>	
 				
-				<div id="info">
-					<div id="clickLatlng"></div>
-					<input type="button" class="btnBasicRound btnBasic_red" id="regLocation" onclick="regLocation();" value="좌표를 선택하려면 누르세요."/>
-					<div>
-						<form id="frm" name="frm" method="post" enctype="multipart/form-data">
-							<input type="hidden" id="totalCnt" value="${totalCnt}"/>
-							<input type="hidden" name="locationGB" id="locationGB" value="mylocation"/>
-							<input type="hidden" name="lat" id="lat" value=""/>
-							<input type="hidden" name="lng" id="lng" value=""/>
-							<input type="text" name="title" id="title" value="" placeholder="제목"/>
-							<input type="text" name="content" id="content" value="" placeholder="한줄내용"/>
-							<input type="file" id="image" name="image"/>
-							<input type="submit" class="btnBasicRoundSmall btnBasic_lime" value="save" onclick="validSubmit();"/>
-						</form>
+				
+					<div id="map" class="jb-content"></div>	
 					
-						<table style="border:1px solid #ccc; border-color: #a0a0a0;">
-							
-						    <colgroup>
-						        <col width="10%"/>
-						        <col width="15%"/>
-						        <col width="30%"/>
-						        <col width="20%"/>
-						        <col width="10%"/>
-						    </colgroup>
-						    <thead>
-						        <tr style="border:1px solid #ccc; border-color: #a0a0a0; background-color: #e4e4e4;">
-						        	<th>작성자</th>
-						            <th>제목</th>
-						            <th>한줄내용</th>
-						            <th>이미지</th>
-						            <th>작성일</th>
-						        </tr>
-						    </thead>
-						    <tbody>
-						        <c:choose>
-						            <c:when test="${fn:length(list) > 0}">
-						                <c:forEach items="${list }" var="row">
-						                    <tr style="border:1px solid #ccc; border-color: #a0a0a0;">
-						                    	<td>${row.WRITER_ID }</td>
-						                        <td><a href='#' onClick="goLocation(${row.LATITUDE},${row.LONGITUDE},'${row.TITLE}','${row.CONTENT}','${row.STORED_FILE_NAME}'); return false;">${row.TITLE }</a></td>
-						                        <td>${row.CONTENT }</td>
-						                        <td><img alt="${row.ORIGIN_FILE_NAME }" src="<c:url value='/resources/locationImgs/${row.STORED_FILE_NAME }'/>" style="width: 100px; height: 100px;" ></td>
-						                        <td>${row.CREATE_DT }</td>
-						                    </tr>
-						                </c:forEach>
-						            </c:when>
-						            <c:otherwise>
-						                <tr style="border:1px solid #ccc; border-color: #a0a0a0;">
-						                    <td colspan="4">조회된 결과가 없습니다.</td>
-						                </tr>
-						            </c:otherwise>
-						        </c:choose>
-						        
-						    </tbody>
-						</table>
-					
-					
-						<!-- 페이징 -->
-						<div class="pagination">
-							<!-- 시작페이지가 1부터면 이전 표시("<<") ​ 안함 -->
-							<c:if test="${start-1 ==0 }">
-							</c:if>
-							
-							<!-- 시작페이지가 1이 아니면 << 이전 표시.  링크는 시작페이지가 6부터 10까지일 경우 5페이지를 가르킴 -->​
-							<c:if test="${start-1!=0 }">
-								<a href="${pageContext.request.contextPath}/MyLocation.do?seq=${start-1}">&laquo;</a>
-							</c:if>
-							
-							<!-- 5개씩 페이지 표시-->​
-							<c:forEach var="i" begin="${start }" end="${end }">
-								<c:choose>
-									<c:when test="${seq == i}">
-										<a class="current" href="MyLocation.do?seq=${i}">${i}</a>
-									</c:when>
-									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/MyLocation.do?seq=${i}">${i}</a>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-							
-							<!-- end페이지 번호가 5, 10 인데 전체 페이지 갯수가 end페이지 보다 크면 다음 페이징 바로가기 표시  (">>")​ .-->​
-							<c:if test="${end % 5 == 0 && pageNum > end}">
-								<a href="${pageContext.request.contextPath}/MyLocation.do?seq=${end+1}">&raquo;</a>
-							</c:if>
-							
-							<!-- 마지막 페이지 번호와 전체 페이지 번호가 같으면서 5개 단위가 아니면 다음바로가기 표시 안함 -->​​
-							<c:if test="${end % 5 != 0 && end == pageNum }">
-							</c:if>
+					<div id="info" class="jb-sidebar">
+						<div id="clickLatlng"></div>
+						<input type="button" class="btnBasicRound btnBasic_red" id="regLocation" onclick="regLocation();" value="좌표 재선택"/>
+						<div>
+							<form id="frm" name="frm" method="post" enctype="multipart/form-data">
+								<input type="hidden" id="totalCnt" value="${totalCnt}"/>
+								<input type="hidden" name="locationGB" id="locationGB" value="mylocation"/>
+								<input type="hidden" name="lat" id="lat" value=""/>
+								<input type="hidden" name="lng" id="lng" value=""/>
+								<input type="text" name="title" id="title" value="" placeholder="제목"/>
+								<input type="text" name="content" id="content" value="" placeholder="한줄내용"/>
+								<input type="file" id="image" name="image"/>
+								<input type="submit" class="btnBasicRoundSmall btnBasic_lime" value="save" onclick="validSubmit();"/>
+							</form>
+						
+							<table style="border:1px solid #ccc; border-color: #a0a0a0;">
+								
+							    <colgroup>
+							        <col width="10%"/>
+							        <col width="15%"/>
+							        <col width="30%"/>
+							        <col width="20%"/>
+							        <col width="10%"/>
+							    </colgroup>
+							    <thead>
+							        <tr style="border:1px solid #ccc; border-color: #a0a0a0; background-color: #e4e4e4;">
+							        	<th>작성자</th>
+							            <th>제목</th>
+							            <th>한줄내용</th>
+							            <th>이미지</th>
+							            <th>작성일</th>
+							        </tr>
+							    </thead>
+							    <tbody>
+							        <c:choose>
+							            <c:when test="${fn:length(list) > 0}">
+							                <c:forEach items="${list }" var="row">
+							                    <tr style="border:1px solid #ccc; border-color: #a0a0a0;">
+							                    	<td>${row.WRITER_ID }</td>
+							                        <td><a href='#' onClick="goLocation(${row.LATITUDE},${row.LONGITUDE},'${row.TITLE}','${row.CONTENT}','${row.STORED_FILE_NAME}'); return false;">${row.TITLE }</a></td>
+							                        <td>${row.CONTENT }</td>
+							                        <td><img alt="${row.ORIGIN_FILE_NAME }" src="<c:url value='/resources/locationImgs/${row.STORED_FILE_NAME }'/>" style="width: 100px; height: 100px;" onerror='this.src="/hiworld/resources/locationImgs/cannotloadimg.jpg"'></td>
+							                        <td>${row.CREATE_DT }</td>
+							                    </tr>
+							                </c:forEach>
+							            </c:when>
+							            <c:otherwise>
+							                <tr style="border:1px solid #ccc; border-color: #a0a0a0;">
+							                    <td colspan="4">조회된 결과가 없습니다.</td>
+							                </tr>
+							            </c:otherwise>
+							        </c:choose>
+							        
+							    </tbody>
+							</table>
+						
+						
+							<!-- 페이징 -->
+							<div class="pagination">
+								<!-- 시작페이지가 1부터면 이전 표시("<<") ​ 안함 -->
+								<c:if test="${start-1 ==0 }">
+								</c:if>
+								
+								<!-- 시작페이지가 1이 아니면 << 이전 표시.  링크는 시작페이지가 6부터 10까지일 경우 5페이지를 가르킴 -->​
+								<c:if test="${start-1!=0 }">
+									<a href="${pageContext.request.contextPath}/MyLocation.do?seq=${start-1}">&laquo;</a>
+								</c:if>
+								
+								<!-- 5개씩 페이지 표시-->​
+								<c:forEach var="i" begin="${start }" end="${end }">
+									<c:choose>
+										<c:when test="${seq == i}">
+											<a class="current" href="MyLocation.do?seq=${i}">${i}</a>
+										</c:when>
+										<c:otherwise>
+											<a href="${pageContext.request.contextPath}/MyLocation.do?seq=${i}">${i}</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								
+								<!-- end페이지 번호가 5, 10 인데 전체 페이지 갯수가 end페이지 보다 크면 다음 페이징 바로가기 표시  (">>")​ .-->​
+								<c:if test="${end % 5 == 0 && pageNum > end}">
+									<a href="${pageContext.request.contextPath}/MyLocation.do?seq=${end+1}">&raquo;</a>
+								</c:if>
+								
+								<!-- 마지막 페이지 번호와 전체 페이지 번호가 같으면서 5개 단위가 아니면 다음바로가기 표시 안함 -->​​
+								<c:if test="${end % 5 != 0 && end == pageNum }">
+								</c:if>
+							</div>
 						</div>
 					</div>
-				</div>
+				
 				<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=a3b7348ff4e608fb9ec5837681929f00"></script>
 			
 				<script>

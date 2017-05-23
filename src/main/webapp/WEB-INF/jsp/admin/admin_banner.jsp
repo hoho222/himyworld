@@ -59,22 +59,22 @@ $(function() {
 			<center>
 				<form action="/hiworld/admin_banner_act.do" id="frm" name="frm" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="locationGB" id="locationGB" value="banner"/>
-					<table border="1">
-						<tr>
-							<td>이동할 URL</td>
-							<td><input type="text" name="gourl"/></td>
+					<table>
+						<tr style="border: solid 1px ; border-color: #bfca73;">
+							<td style="border: 1px solid; border-color: #bfca73;">이동할 URL</td>
+							<td style="border: 1px solid; border-color: #bfca73;"><input type="text" name="gourl"/></td>
 						</tr>
-						<tr>
-							<td>배너이미지</td>
-							<td><input type="file" id="fileuploader" name="fileuploader"/></td>
+						<tr style="border: solid 1px ; border-color: #bfca73;">
+							<td style="border: 1px solid; border-color: #bfca73;">배너이미지</td>
+							<td style="border: 1px solid; border-color: #bfca73;"><input type="file" id="fileuploader" name="fileuploader"/></td>
 						</tr>
-						<tr>
-							<td>게시 날짜</td>
-							<td><input type="text" id="startdate" name="startdate"/> ~ <input type="text" id="enddate" name="enddate"/></td>
+						<tr style="border: solid 1px ; border-color: #bfca73;">
+							<td style="border: 1px solid; border-color: #bfca73;">게시 날짜</td>
+							<td style="border: 1px solid; border-color: #bfca73;"><input type="text" id="startdate" name="startdate" size="10px"/> ~ <input type="text" id="enddate" name="enddate" size="10px"/></td>
 						</tr>
-						<tr>
-							<td>노출 상태</td>
-							<td>
+						<tr style="border: solid 1px ; border-color: #bfca73;">
+							<td style="border: 1px solid; border-color: #bfca73;">노출 상태</td>
+							<td style="border: 1px solid; border-color: #bfca73;">
 								진열<input type="radio" id="display_Y" name="display_yn" value="Y"/>
 								미진열<input type="radio" id="display_N" name="display_yn" value="N"/>
 							</td>

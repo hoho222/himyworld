@@ -24,6 +24,17 @@ $(function() {
 		</div>
 		<nav id="menu-left">
 			<ul>
+				<c:choose>
+					<c:when test="${sessionId != 'null' && sessionName != 'null'}">
+						<li><c:out value="${sessionId }"></c:out></li>
+						<li><a href="${pageContext.request.contextPath}/logout.do"><span><i><input type="button" class="btnBasicSmall btnBasic_lime" onclick="validSubmit()" value="Logout"/></i></span></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${pageContext.request.contextPath}/join.do"><span><i><input type="button" class="btnBasicSmall btnBasic_purple" onclick="validSubmit()" value="Join Us"/></i></span></a></li>
+						<li><a href="${pageContext.request.contextPath}/login.do"><span><i><input type="button" class="btnBasicSmall btnBasic_lime" onclick="validSubmit()" value="Login"/></i></span></a></li>
+					</c:otherwise>
+				</c:choose>
+				
 				<li><a href="${pageContext.request.contextPath}/BoardList.do?seq=1">Community</a></li>
 				<li><a href="${pageContext.request.contextPath}/MyLocation.do?seq=1">Build Memory</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin_index.do">Management</a></li>
@@ -51,11 +62,9 @@ $(function() {
 				<ul>
 					<c:choose>
 						<c:when test="${sessionId != 'null' && sessionName != 'null'}">
-							<li><c:out value="${sessionId }"></c:out></li>
-							<li><a href="${pageContext.request.contextPath}/logout.do"><span><i><input type="button" class="btnBasicSmall btnBasic_lime" onclick="validSubmit()" value="Logout"/></i></span></a></li>
+							<li><c:out value="${sessionId }"></c:out><a href="${pageContext.request.contextPath}/logout.do"><span><i><input type="button" class="btnBasicSmall btnBasic_lime" onclick="validSubmit()" value="Logout"/></i></span></a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="${pageContext.request.contextPath}/join.do"><span><i><input type="button" class="btnBasicSmall btnBasic_purple" onclick="validSubmit()" value="Join Us"/></i></span></a></li>
 							<li><a href="${pageContext.request.contextPath}/login.do"><span><i><input type="button" class="btnBasicSmall btnBasic_lime" onclick="validSubmit()" value="Login"/></i></span></a></li>
 						</c:otherwise>
 					</c:choose>

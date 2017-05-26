@@ -48,11 +48,18 @@ $(function() {
 					            <c:when test="${fn:length(list) > 0}">
 					                <c:forEach items="${list }" var="row">
 					                    <tr>
-					                        <td><a href="${pageContext.request.contextPath}/BoardDetail.do?idx=${row.IDX}">${row.TITLE }</a></td>
+					                    	<c:choose>
+										        <c:when test="${fn:length(row.TITLE) > 10}">
+													<td><a href="${pageContext.request.contextPath}/BoardDetail.do?idx=${row.IDX}">${fn:substring(row.TITLE,0,9)}...</a></td>
+												</c:when>
+												<c:otherwise>
+													<td><a href="${pageContext.request.contextPath}/BoardDetail.do?idx=${row.IDX}">${row.TITLE }</a></td>
+												</c:otherwise>
+											</c:choose>
 					                        <td>${row.HIT_CNT }</td>
 					                        <td>${row.USER_ID }</td>
 					                        <td>${row.USER_NAME }</td>
-					                        <td>${row.CREATE_DT }</td>
+					                        <td>${fn:substring(row.CREATE_DT,0,10)}</td>
 					                    </tr>
 					                </c:forEach>
 					            </c:when>

@@ -1,5 +1,11 @@
 @CHARSET "EUC-KR";
 
+a:link {text-decoration: none; color: #000000;}
+a:visited {text-decoration: none; color: #000000;}
+a:active {text-decoration: none; color: #000000;}
+a:hover {text-decoration: none; color: #c87799;}
+
+
 .voldfont {
     font-family: Impact, Charcoal, sans-serif;
     color: #000000;

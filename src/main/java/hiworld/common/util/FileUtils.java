@@ -19,15 +19,15 @@ public class FileUtils {
 	
 	//기본 이미지 업로드 filePath
 //	private static final String filePath_default = "D:\\Project\\workspace\\HiWorld\\src\\main\\webapp\\resources\\default\\";			//로컬
-	private static final String filePath_default = "/home/hosting_users/hiworldkk/tomcat/webapps/hiworld/resources/default"; 			//실 서버
+	private static final String filePath_default = "/home/hosting_users/hiworldkk/tomcat/webapps/hiworld/resources/default/"; 			//실 서버
 	
 	//어드민 배너등록 시 타는 filePath
 //	private static final String filePath_banner = "D:\\Project\\workspace\\HiWorld\\src\\main\\webapp\\resources\\banners\\";			//로컬
-	private static final String filePath_banner = "/home/hosting_users/hiworldkk/tomcat/webapps/hiworld/resources/banners"; 			//실 서버
+	private static final String filePath_banner = "/home/hosting_users/hiworldkk/tomcat/webapps/hiworld/resources/banners/"; 			//실 서버
 	
 	//프론트 추억쌓기 이미지등록 시 타는 filePath
 //	private static final String filePath_location = "D:\\Project\\workspace\\HiWorld\\src\\main\\webapp\\resources\\locationImgs\\";	//로컬
-	private static final String filePath_location = "/home/hosting_users/hiworldkk/tomcat/webapps/hiworld/resources/locationImgs"; 		//실 서버
+	private static final String filePath_location = "/home/hosting_users/hiworldkk/tomcat/webapps/hiworld/resources/locationImgs/"; 		//실 서버
 	
 	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;

@@ -8,9 +8,11 @@
 <script>
 function validSubmit() {
 	var f = document.getElementById("frm");
+	var endDateStr = document.getElementById("enddate").value;
 	
+	f.enddate.value = endDateStr + " 23:59:59";
 	f.action = '/hiworld/admin_banner_act.do';
-	f.submit(); 
+	f.submit();
 }
 
 function del(idx) {
@@ -56,45 +58,54 @@ $(function() {
 				<h1><span>Management</span> Banner</h1>
 			</div>
 			<br>
-			<center>
-				<form action="/hiworld/admin_banner_act.do" id="frm" name="frm" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="locationGB" id="locationGB" value="banner"/>
-					<table>
-						<tr style="border: solid 1px ; border-color: #bfca73;">
-							<td style="border: 1px solid; border-color: #bfca73;">이동할 URL</td>
-							<td style="border: 1px solid; border-color: #bfca73;"><input type="text" name="gourl"/></td>
-						</tr>
-						<tr style="border: solid 1px ; border-color: #bfca73;">
-							<td style="border: 1px solid; border-color: #bfca73;">배너이미지</td>
-							<td style="border: 1px solid; border-color: #bfca73;"><input type="file" id="fileuploader" name="fileuploader"/></td>
-						</tr>
-						<tr style="border: solid 1px ; border-color: #bfca73;">
-							<td style="border: 1px solid; border-color: #bfca73;">게시 날짜</td>
-							<td style="border: 1px solid; border-color: #bfca73;"><input type="text" id="startdate" name="startdate" size="10px"/> ~ <input type="text" id="enddate" name="enddate" size="10px"/></td>
-						</tr>
-						<tr style="border: solid 1px ; border-color: #bfca73;">
-							<td style="border: 1px solid; border-color: #bfca73;">노출 상태</td>
-							<td style="border: 1px solid; border-color: #bfca73;">
-								진열<input type="radio" id="display_Y" name="display_yn" value="Y"/>
-								미진열<input type="radio" id="display_N" name="display_yn" value="N"/>
-							</td>
-						</tr>
-					</table> 
-					<input type="submit" value="등록" class="btnBasicSmall btnBasic_purple"/>
-				</form>
-			</center>
+			<br>
+			
+			<h2 style="color:#aba063;">배너 등록</h2>
+			<form class="w3-container w3-card-4 w3-light-grey" id="frm" name="frm" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="locationGB" id="locationGB" value="banner"/>
+				
+				<div class="w3-row w3-section">
+				  <div class="w3-col" style="width:120px"><i class="w3-large">이동할 URL</i></div>
+				    <div class="w3-rest">
+				      <input type="text" name="gourl"/>
+				    </div>
+				</div>
+				<div class="w3-row w3-section">
+				  <div class="w3-col" style="width:120px"><i class="w3-large">배너이미지</i></div>
+				    <div class="w3-rest">
+				      <input type="file" id="fileuploader" name="fileuploader"/>
+				    </div>
+				</div>
+				<div class="w3-row w3-section">
+				  <div class="w3-col" style="width:120px"><i class="w3-large">게시 날짜</i></div>
+				    <div class="w3-rest">
+				      <input type="text" id="startdate" name="startdate" size="10px"/> ~ <input type="text" id="enddate" name="enddate" size="10px"/>
+				    </div>
+				</div>
+				<div class="w3-row w3-section">
+				  <div class="w3-col" style="width:120px"><i class="w3-large">노출 상태</i></div>
+				    <div class="w3-rest">
+				      	진열<input type="radio" id="display_Y" name="display_yn" value="Y"/>
+						미진열<input type="radio" id="display_N" name="display_yn" value="N"/>
+				    </div>
+				</div>
+				
+				<center>
+					<input type="button" value="등록" class="btnBasicSmall btnBasic_purple" onclick="validSubmit();"/>
+				</center>
+			</form>
 			
 			<br><br>
-			<h2>배너 리스트</h2>
+			<h2 style="color:#aba063;">배너 리스트</h2>
 			<form name="bannerFrm">
 				<input type="hidden" name="idx"/>
 				<table class="afternoon-session" cellspacing="1">
 					<thead>
 					    <tr>
-					        <th scope="row">URL</th>
-					        <th scope="row">이미지명</th>
-					        <th scope="row">게시일</th>
-					        <th scope="row">관리</th>
+					        <th scope="row" style="text-align:center;">URL</th>
+					        <th scope="row" style="text-align:center;">이미지명</th>
+					        <th scope="row" style="text-align:center;">게시일</th>
+					        <th scope="row" style="text-align:center;">관리</th>
 					    </tr>
 					</thead>
 					
@@ -104,10 +115,10 @@ $(function() {
 								<c:forEach items="${bannerList }" var="banner">
 								
 									<tr>
-										<td>${banner.GO_URL }</td>
-										<td>${banner.ORIGINAL_FILE_NAME }</td>
-										<td>${banner.STARTDATE } ~ ${banner.ENDDATE }</td>
-										<td>
+										<td style="text-align:center;">${banner.GO_URL }</td>
+										<td style="text-align:center;">${banner.ORIGINAL_FILE_NAME }</td>
+										<td style="text-align:center;">${fn:substring(banner.STARTDATE,0,10)} ~ ${fn:substring(banner.ENDDATE,0,10)}</td>
+										<td style="text-align:center;">
 											<input type="button" class="btnBasicSmall btnBasic_purple" onclick="del(${banner.IDX });" value="삭제"/>
 										</td>
 									</tr>

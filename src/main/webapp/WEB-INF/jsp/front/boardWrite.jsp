@@ -43,35 +43,30 @@ function goBack() {
 				<h1><span>게시글 </span>작성</h1>
 			</div>
 			<br>	
-			<center>
-			    <form id="frm">
-				        <table style="border: 1px solid; border-collapse: collapse;">   
-				        	<tr style="border: solid 1px ;">
-				        		<th style="border: solid 1px ;">제목</th>
-				        		<td style="border: 1px solid;"><input type="text" id="title" name="title" size="20"></td>
-							</tr>
-							
-							<tr style="border: solid 1px ;">
-				        		<th style="border: solid 1px ;">글쓴이명</th>
-				        		<td style="border: 1px solid;"><input type="text" id="user_name" name="user_name" value="${sessionName}" readonly="readonly" size="20"></td>
-							</tr>
-							
-							<tr style="border: solid 1px ;">
-				        		<th style="border: solid 1px ;">글쓴이ID</th>
-				        		<td style="border: 1px solid;"><input type="text" id="user_id" name="user_id" value="${sessionId}" readonly="readonly"></td>
-							</tr> 
-							
-							<tr style="border: solid 1px ;">     
-								<th style="border: solid 1px ;">내용</th>
-								<td style="border: 1px solid;"><textarea id="contents" name="contents" rows="10" cols="20"></textarea></td>
-							</tr> 
-						</table>
-			        
-			        <br>
-			        <input type="button" class="btnBasicSmall btnBasic_lime" onclick="goBack();" value="뒤로가기" />
-			        <input type="button" class="btnBasicSmall btnBasic_purple" onclick="validSubmit()" value="작성하기"/>
-			    </form>
-			</center>
+		    <form id="frm">
+			    <p>      
+				    <label class="w3-text-brown"><b>제목</b></label>
+				    <input class="w3-input w3-border w3-sand" type="text" id="title" name="title" size="20">
+			    </p>
+			    <p>      
+				    <label class="w3-text-brown"><b>글쓴이명</b></label>
+				    <input type="text" class="w3-input w3-border w3-sand" id="user_name" name="user_name" value="${sessionName}" readonly="readonly" size="20">
+				</p>
+			    
+			    <p>      
+				    <label class="w3-text-brown"><b>글쓴이ID</b></label>
+				    <input type="text" class="w3-input w3-border w3-sand" id="user_id" name="user_id" value="${sessionId}" readonly="readonly">
+				</p>
+				
+				<p>      
+				    <label class="w3-text-brown"><b>내용</b></label>
+				    <textarea id="contents" class="w3-input w3-border w3-sand" name="contents" rows="10" cols="20"></textarea>
+				</p>	
+		        
+		        <br>
+		        <input type="button" class="btnBasicSmall btnBasic_lime" onclick="goBack();" value="뒤로가기" />
+		        <input type="button" class="btnBasicSmall btnBasic_purple" onclick="validSubmit()" value="작성하기"/>
+		    </form>
      	</div>
      </div>
 </div>

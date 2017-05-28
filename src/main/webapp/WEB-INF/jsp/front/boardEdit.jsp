@@ -28,45 +28,27 @@ function goBack() {
 	<div class="about">
 		<div class="wrap">
 			<div class="testimonial-head">
-				<h1>Edit Detail</h1>
+				<h1><span>게시글</span> 수정</h1>
 			</div>
 			<br>
 			<form id="frm">
 		        <center>
-			        <table style="border: 1px solid; border-collapse: collapse;">   
-			        	<tr style="border: solid 1px ;">
-		                    <th style="border: solid 1px ;">글 번호</th>
-		                    <td style="border: solid 1px ;"><input type="hidden" id="idx" name="idx" value="${detailMap.IDX}"/>${detailMap.IDX}</td>
-		                </tr>
-						<tr style="border: solid 1px ;">
-		                    <th style="border: solid 1px ;">작성일</th>
-		                    <td style="border: solid 1px ;">${detailMap.CREATE_DT}</td>
-		                </tr>
-			        	<tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">조회수</th>
-			        		<td style="border: 1px solid;">${detailMap.HIT_CNT}</td>
-						</tr>
-						<tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">글쓴이명</th>
-			        		<td style="border: 1px solid;">${detailMap.USER_NAME}</td>
-						</tr>
-						<tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">글쓴이ID</th>
-			        		<td style="border: 1px solid;">${detailMap.USER_ID}</td>
-						</tr>
-		                <tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">제목</th>
-			        		<td style="border: 1px solid;"><input type="text" id="title" name="title" value="${detailMap.TITLE}"/></td>
-						</tr>
-						<tr style="border: solid 1px ;">     
-							<th style="border: solid 1px ;">내용</th>
-							<td style="border: 1px solid;"><input type="text" id="contents" name="contents" value="${detailMap.CONTENTS}"/></td>
-						</tr> 
-					</table>
+			    <input type="hidden" id="idx" name="idx" value="${detailMap.IDX}"/>      
+			    <div class="w3-card-4" style="width:80%">
+					<div class="w3-container w3-center">
+						<br>
+					  	<h4><span style="color:#c86288; font-size: large;">제목</span><input type="text" id="title" name="title" value="${detailMap.TITLE}"/></h4><br><br>
+						<h4><span style="color:#c86288; font-size: large;">내용</span><input type="text" id="contents" name="contents" value="${detailMap.CONTENTS}"/></h4><br><br>
+						<h5 style="color:grey;">${detailMap.USER_NAME}(${detailMap.USER_ID})</h5>
+						<h5 style="color:grey;">작성일 : ${fn:substring(detailMap.CREATE_DT,0,10)}</h5>
+						<h5 style="color:grey;">조회수 : ${detailMap.HIT_CNT}</h5>
+					    <div class="w3-section">
+						    <input type="button" onclick="goBack();" value="뒤로가기" class="btnBasicSmall btnBasic_lime"/>
+		        			<input type="button" onclick="validSubmit();" value="저장" class="btnBasicSmall btnBasic_purple"/>
+					   </div>
+				 	</div>
 				
-		        <br>
-		        <input type="button" onclick="goBack();" value="뒤로가기" class="btnBasicSmall btnBasic_lime"/>
-		        <input type="button" onclick="validSubmit();" value="저장" class="btnBasicSmall btnBasic_purple"/>
+				</div>
 		        </center>
 		    </form>
 		</div>

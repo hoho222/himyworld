@@ -13,46 +13,32 @@
 	<div class="about">
 		<div class="wrap">
 			<div class="testimonial-head">
-				<h1>View Detail</h1>
+				<h1><span>게시글</span> 보기</h1>
 			</div>
 			<br>
 			<center>
 				<form id="frm">
-			        <table style="border: 1px solid; border-collapse: collapse;">   
-			        	<tr style="border: solid 1px ;">
-		                    <th style="border: solid 1px ;">글 번호</th>
-		                    <td style="border: solid 1px ;">${detailMap.IDX}</td>
-		                </tr>
-			        	<tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">조회수</th>
-			        		<td style="border: 1px solid;">${detailMap.HIT_CNT}</td>
-						</tr>
-						<tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">글쓴이명</th>
-			        		<td style="border: 1px solid;">${detailMap.USER_NAME}</td>
-						</tr>
-						<tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">글쓴이ID</th>
-			        		<td style="border: 1px solid;">${detailMap.USER_ID}</td>
-						</tr>
-						<tr style="border: solid 1px ;">
-		                    <th style="border: solid 1px ;">작성일</th>
-		                    <td style="border: solid 1px ;">${detailMap.CREATE_DT}</td>
-		                </tr>
-		                <tr style="border: solid 1px ;">
-			        		<th style="border: solid 1px ;">제목</th>
-			        		<td style="border: 1px solid;">${detailMap.TITLE}</td>
-						</tr>
-						<tr style="border: solid 1px ;">     
-							<th style="border: solid 1px ;">내용</th>
-							<td style="border: 1px solid;">${detailMap.CONTENTS}</td>
-						</tr> 
-					</table>
+					<div class="w3-card-4" style="width:80%">
+						<div class="w3-container w3-center">
+						  	<h3>${detailMap.TITLE}</h3><br><br>
+							<h4>${detailMap.CONTENTS}</h4><br><br>
+							<h5 style="color:grey;">${detailMap.USER_NAME}(${detailMap.USER_ID})</h5>
+							<h5 style="color:grey;">작성일 : ${fn:substring(detailMap.CREATE_DT,0,10)}</h5>
+							<h5 style="color:grey;">조회수 : ${detailMap.HIT_CNT}</h5>
+						    <div class="w3-section">
+							    <input type="button" value="뒤로가기" onclick="history.back();" class="btnBasicSmall btnBasic_lime" />
+							    <c:if test="${sessionId != 'null' && sessionName != 'null' && sessionId == detailMap.USER_ID}">
+								    <a href="${pageContext.request.contextPath}/BoardEdit.do?idx=${detailMap.IDX}"><input type="button" value="수정하기" class="btnBasicSmall btnBasic_purple" /></a>
+								    <a href="${pageContext.request.contextPath}/BoardDeleteState.do?idx=${detailMap.IDX}"><input type="button" value="삭제상태" class="btnBasicSmall btnBasic_lime" /></a>
+								    <a href="${pageContext.request.contextPath}/BoardDelete.do?idx=${detailMap.IDX}"><input type="button" value="영구삭제" class="btnBasicSmall btnBasic_purple" /></a>
+							    </c:if>
+						   </div>
+					 	</div>
+					
+					</div>
+				 
 			        <br>
-			        <input type="button" value="뒤로가기" onclick="history.back();" class="btnBasicSmall btnBasic_lime" />
-			        <a href="${pageContext.request.contextPath}/BoardEdit.do?idx=${detailMap.IDX}"><input type="button" value="수정하기" class="btnBasicSmall btnBasic_purple" /></a>
-			        <a href="${pageContext.request.contextPath}/BoardDeleteState.do?idx=${detailMap.IDX}"><input type="button" value="삭제상태" class="btnBasicSmall btnBasic_lime" /></a>
-			        <a href="${pageContext.request.contextPath}/BoardDelete.do?idx=${detailMap.IDX}"><input type="button" value="영구삭제" class="btnBasicSmall btnBasic_purple" /></a>
+			        
 			    </form>
 			</center>
 	    </div>

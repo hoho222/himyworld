@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import hiworld.admin.dao.AdminDAO;
 import hiworld.admin.service.AdminService;
@@ -75,19 +76,15 @@ public class SampleController {
 	}
 	
 	@RequestMapping(value="/loginAct.do")
-	public ModelAndView loginAct(@RequestParam Map<String,Object> p, HttpServletRequest request) throws Exception {
-		
-		ModelAndView mv = new ModelAndView();
+	public String loginAct(@RequestParam Map<String,Object> p, HttpServletRequest request, final RedirectAttributes redirectAttributes) throws Exception {
 		
 		if(sampleService.isMember(p, request)){
-			mv.addObject("returnMsg", "로그인 성공!");
-			mv = new ModelAndView("redirect:/index.do");
+			return "redirect:/index.do";
 		} else {
-			mv.addObject("returnMsg", "로그인 실패!! 아이디 및 패스워드를 재 확인해 주세요.");
-			mv = new ModelAndView("redirect:/login.do");
+			redirectAttributes.addFlashAttribute("returnMsg", "로그인 실패! 아이디 또는 비밀번호를 확인해 주세요.");
+			return "redirect:/login.do";
 		}
 		
-		return mv;
 	}
 	
 	@RequestMapping(value="/logout.do")

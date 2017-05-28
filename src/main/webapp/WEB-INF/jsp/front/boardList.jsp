@@ -36,11 +36,11 @@ $(function() {
 					<table class="afternoon-session" cellspacing="1">
 						<thead>
 							<tr>
-								<th scope="row">제목</th>
-								<th scope="row">조회수</th>
-								<th scope="row">작성자ID</th>
-								<th scope="row">작성자명</th>
-								<th scope="row">작성일</th>
+								<th scope="row" style="text-align:center;">제목</th>
+								<th scope="row" style="text-align:center;">조회수</th>
+								<th scope="row" style="text-align:center;">작성자ID</th>
+								<th scope="row" style="text-align:center;">작성자명</th>
+								<th scope="row" style="text-align:center;">작성일</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -50,16 +50,16 @@ $(function() {
 					                    <tr>
 					                    	<c:choose>
 										        <c:when test="${fn:length(row.TITLE) > 10}">
-													<td><a href="${pageContext.request.contextPath}/BoardDetail.do?idx=${row.IDX}">${fn:substring(row.TITLE,0,9)}...</a></td>
+													<td style="text-align:center;"><a href="${pageContext.request.contextPath}/BoardDetail.do?idx=${row.IDX}">${fn:substring(row.TITLE,0,9)}...</a></td>
 												</c:when>
 												<c:otherwise>
-													<td><a href="${pageContext.request.contextPath}/BoardDetail.do?idx=${row.IDX}">${row.TITLE }</a></td>
+													<td style="text-align:center;"><a href="${pageContext.request.contextPath}/BoardDetail.do?idx=${row.IDX}">${row.TITLE }</a></td>
 												</c:otherwise>
 											</c:choose>
-					                        <td>${row.HIT_CNT }</td>
-					                        <td>${row.USER_ID }</td>
-					                        <td>${row.USER_NAME }</td>
-					                        <td>${fn:substring(row.CREATE_DT,0,10)}</td>
+					                        <td style="text-align:center;">${row.HIT_CNT }</td>
+					                        <td style="text-align:center;">${row.USER_ID }</td>
+					                        <td style="text-align:center;">${row.USER_NAME }</td>
+					                        <td style="text-align:center;">${fn:substring(row.CREATE_DT,0,10)}</td>
 					                    </tr>
 					                </c:forEach>
 					            </c:when>

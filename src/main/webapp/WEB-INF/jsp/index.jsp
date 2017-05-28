@@ -19,12 +19,9 @@
 					    	
 					    	<!---start-da-slider----->
 							
-									<div class="da-slide">
-										<h2><a href="${banner.GO_URL }" target="_blank"><img alt="${banner.ORIGINAL_FILE_NAME }" src="<c:url value='/resources/banners/${banner.STORED_FILE_NAME }'/>" ></a></h2>
-									</div>
-									<nav class="da-arrows">
-										<span class="da-arrows-next"> </span>
-									</nav>
+							<div class="da-slide">
+								<h2><a href="${banner.GO_URL }" target="_blank"><img alt="${banner.ORIGINAL_FILE_NAME }" src="<c:url value='/resources/banners/${banner.STORED_FILE_NAME }'/>" onerror='this.src="/hiworld/resources/locationImgs/cannotloadimg.jpg"' ></a></h2>
+							</div>
 							
 						
 							<script type="text/javascript" src="js/jquery.cslider.js"></script>

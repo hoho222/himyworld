@@ -30,9 +30,9 @@ $(function() {
 					<input type="button" class="btnBasicRound btnBasic_purple" value="글 작성" onclick="location.href='BoardWrite.do'"/>
 				</div>
 				
-				<p>총 ${totalCnt} 건의 글이 있습니다.</p>
 				<div class="center">
-					
+					<p>총 <span style="color:#E95192;">${totalCnt}</span> 건의 글이 있습니다.</p>
+				
 					<table class="afternoon-session" cellspacing="1">
 						<thead>
 							<tr>
@@ -72,8 +72,9 @@ $(function() {
 						</tbody>
 					</table>
 				
-					<br>
-					
+				</div>
+				
+				<center>
 					<div class="pagination">
 						<!-- 시작페이지가 1부터면 이전 표시("<<") ​ 안함 -->
 						<c:if test="${start-1 ==0 }">
@@ -81,7 +82,7 @@ $(function() {
 						
 						<!-- 시작페이지가 1이 아니면 << 이전 표시.  링크는 시작페이지가 6부터 10까지일 경우 5페이지를 가르킴 -->​
 						<c:if test="${start-1!=0 }">
-							<a href="${pageContext.request.contextPath}/BoardList.do?seq=${start-1}">&laquo;</a>
+							<a href="${pageContext.request.contextPath}/BoardList.do?seq=${start-1}"><span class="glyphicon glyphicon-backward"></span></a>
 						</c:if>
 						
 						<!-- 5개씩 페이지 표시-->​
@@ -98,14 +99,14 @@ $(function() {
 						
 						<!-- end페이지 번호가 5, 10 인데 전체 페이지 갯수가 end페이지 보다 크면 다음 페이징 바로가기 표시  (">>")​ .-->​
 						<c:if test="${end % 5 == 0 && pageNum > end}">
-							<a href="${pageContext.request.contextPath}/BoardList.do?seq=${end+1}">&raquo;</a>
+							<a href="${pageContext.request.contextPath}/BoardList.do?seq=${end+1}"><span class="glyphicon glyphicon-forward"></span></a>
 						</c:if>
 						
 						<!-- 마지막 페이지 번호와 전체 페이지 번호가 같으면서 5개 단위가 아니면 다음바로가기 표시 안함 -->​​
 						<c:if test="${end % 5 != 0 && end == pageNum }">
 						</c:if>
 					</div>
-				</div>
+				</center>
 			</div>
 		</div>
 	</div>

@@ -373,7 +373,7 @@ body{
 .footer-grid input[type="text"]:hover{
 	border:1px solid #999;
 }
-.footer-grid input[type="submit"]{
+.footer-grid input[type="button"]{
 	background: #F36EA7;
 	padding: 0.8em;
 	display: block;
@@ -393,7 +393,7 @@ body{
 	-moz-transition: 0.5s all;
 	-o-transition: 0.5s all;
 }
-.footer-grid input[type="submit"]:hover {
+.footer-grid input[type="button"]:hover {
 	background: #EE639F;
 }
 .footer-grids {

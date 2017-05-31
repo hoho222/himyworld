@@ -36,6 +36,11 @@ public interface SampleService {
 	boolean isMember(Map<String, Object> commandMap, HttpServletRequest request) throws Exception;
 	
 	/*
+	 * 회원가입 시 아이디 중복확인
+	 */
+	boolean memberOverlap(Map<String,Object> map) throws Exception;
+	
+	/*
 	 * 회원 로그아웃
 	 */
 	void logoutMember(HttpServletRequest request) throws Exception;

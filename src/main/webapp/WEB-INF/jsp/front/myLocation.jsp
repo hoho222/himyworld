@@ -25,6 +25,12 @@
 				<br>
 				
 				<div style="margin: 2% 0 3% 0;">
+					<p class="w3-tooltip">How to <span class="glyphicon glyphicon-question-sign"></span>
+					    <span class="w3-text w3-tag w3-animate-opacity" style="background-color:#dbdbdb;">
+					    	1. 좌표선택 버튼을 누르고 마커를 움직여 명소로 지정하고 싶은 지점을 선택하세요.<br>
+					    	2. 해당 명소에 대한 제목 및 한줄내용을 입력하고 이미지를 추가한 뒤 save 버튼을 눌러 저장하세요.
+					    </span>
+				    </p>
 					<div id="clickLatlng"></div>
 					<input type="button" class="btnBasicRound btnBasic_purple" id="regLocation" onclick="regLocation();" value="좌표선택"/>
 					<form id="frm" name="frm" method="post" enctype="multipart/form-data">
@@ -55,12 +61,12 @@
 												<ul class="w3-ul w3-card-4">
 											  		<li class="w3-padding-16">
 													    <span onclick="this.parentElement.style.display='none'" class="w3-button w3-white w3-xlarge w3-right">×</span>
+													    <a href='#' onClick="goLocation(${row.LATITUDE},${row.LONGITUDE},'${row.TITLE}','${row.CONTENT}','${row.STORED_FILE_NAME}'); return false;">
 													    <img src="<c:url value='/resources/locationImgs/${row.STORED_FILE_NAME }'/>" class="w3-left w3-circle w3-margin-right" onerror='this.src="/hiworld/resources/locationImgs/cannotloadimg.jpg"' style="box-shadow:0 0 10px #c86288; width:66px; height:66px;">
 													    <span class="w3-large">
-													    	<a href='#' onClick="goLocation(${row.LATITUDE},${row.LONGITUDE},'${row.TITLE}','${row.CONTENT}','${row.STORED_FILE_NAME}'); return false;">
-													    		<span style="color:#E95192; font-weight: bolder;">${row.TITLE }</span>
-													    	</a>
+												    		<span style="color:#E95192; font-weight: bolder;">${row.TITLE }</span>
 													    </span><br>
+													    </a>
 													    <span>${row.CONTENT }</span><br>
 													    <span><span class="glyphicon glyphicon-user">${row.WRITER_ID }</span></span><br>
 													    <span><span class="glyphicon glyphicon-pencil">${fn:substring(row.CREATE_DT,0,10)}</span></span>
@@ -153,7 +159,7 @@
 							return false;
 						}
 						if(f.lat.value == "" || f.lng.value == ""){
-							alert("지도에 장소가 선택되지 않았습니다. 먼저 마커를 움직여 위치를 지정해주세요.");
+							alert("지도에 장소가 선택되지 않았습니다. 먼저 좌표선택을 누른 후, 마커를 움직여 위치를 지정해주세요.");
 							return false;
 						}
 						
@@ -232,7 +238,7 @@
 						// 마커가 지도 위에 표시되도록 설정합니다
 						marker.setMap(map);
 						
-						var iwContent = '<div style="padding:5px; height:auto;">'+infoContent+'<br><a href="http://map.daum.net/link/to/'+infoTitle+','+lat+','+lng+'" style="color:blue" target="_blank">가보고싶어! 어떻게가는지 알려줘!(Click)</a><br><img src="<c:url value="/resources/locationImgs/'+infoImage+'"/>" style="height:200px; width:200px"></div>', 
+						var iwContent = '<div style="padding:5px; height:auto;">'+infoContent+'<br><a href="http://map.daum.net/link/to/'+infoTitle+','+lat+','+lng+'" style="color:blue" target="_blank">가보고싶어! 어떻게가는지 알려줘!(Click)</a><br><img src="<c:url value="/resources/locationImgs/'+infoImage+'"/>" style="height:170px; width:200px"></div>', 
 					    iwPosition = new daum.maps.LatLng(lat, lng); //인포윈도우 표시 위치입니다
 			
 						// 인포윈도우(마커에 설명)를 생성합니다

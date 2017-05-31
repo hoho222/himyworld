@@ -34,7 +34,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 		//exclude-mapping 대신, 요청된 url
 		String requestUrl = request.getRequestURL().toString();
 		
-		if(requestUrl.contains("/hiworld/index.do") || requestUrl.contains("/hiworld/login.do") || requestUrl.contains("/hiworld/loginAct.do") || requestUrl.contains("/hiworld/join.do") || requestUrl.contains("/hiworld/joinAct.do")){
+		if(requestUrl.contains("/hiworld/index.do") || requestUrl.contains("/hiworld/login.do") || requestUrl.contains("/hiworld/loginAct.do") || requestUrl.contains("/hiworld/join.do") || requestUrl.contains("/hiworld/joinAct.do") || requestUrl.contains("/hiworld/joinOverlap.do")){
 			return true;
 		}
 		

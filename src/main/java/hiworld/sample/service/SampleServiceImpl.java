@@ -27,6 +27,21 @@ public class SampleServiceImpl implements SampleService {
 	public void insertMember(Map<String, Object> map) throws Exception {
 		sampleDAO.insertMember(map);
 	}
+	
+	@Override
+	public boolean memberOverlap(Map<String,Object> map) throws Exception{
+		
+		List<Map<String, Object>> selectUserList = sampleDAO.selectMemberList(map);
+		
+		if(selectUserList.isEmpty()) {
+			//중복된 ID 없음 -> 가입가능
+			return true;
+		} else {
+			//중복된 ID 있음 -> 가입불가
+			return false;
+		}
+		
+	}
 
 	@Override
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception {

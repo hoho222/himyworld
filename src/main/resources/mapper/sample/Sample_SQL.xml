@@ -92,6 +92,17 @@
     	]]>
     </insert>
     
+    <select id="sample.selectMemberList" parameterType="hashmap" resultType="hashmap">
+	     <![CDATA[
+	     SELECT *
+	     FROM K_MEMBER
+	     WHERE 1=1
+	     ]]>
+	     <if test="id != null and id != ''">
+	     	AND ID = #{id}
+	     </if>
+	</select>
+    
     <insert id="insertBoard">
     	<![CDATA[
     	INSERT INTO K_BOARD_TEST

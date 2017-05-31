@@ -5,6 +5,9 @@ a:visited {text-decoration: none; color: #000000;}
 a:active {text-decoration: none; color: #000000;}
 a:hover {text-decoration: none; color: #c87799;}
 
+input[type="password"] {
+font-family: sans-serif !important;
+}
 
 .voldfont {
     font-family: Impact, Charcoal, sans-serif;

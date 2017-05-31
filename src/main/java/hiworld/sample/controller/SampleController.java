@@ -1,5 +1,6 @@
 package hiworld.sample.controller;
 
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -7,11 +8,13 @@ import java.util.Map.Entry;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -58,6 +61,20 @@ public class SampleController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/joinOverlap.do")
+	public void readMemberOverlap(@RequestParam Map<String,Object> map, HttpServletResponse response) throws Exception {
+		
+		PrintWriter out = response.getWriter();
+		
+		boolean isOverlap = sampleService.memberOverlap(map);
+		
+		//ajax 처리
+		out.print(isOverlap); //이 값이 rData로 넘어감
+		out.flush();
+		out.close();
+
+	}
+	
 	@RequestMapping(value="/joinAct.do")
 	public ModelAndView joinAct(@RequestParam Map<String,Object> p) throws Exception {
 		
@@ -71,7 +88,7 @@ public class SampleController {
 	@RequestMapping(value="/login.do")
 	public ModelAndView login(Map<String, Object> commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("/front/login");
-		
+		System.out.println("너냐"+commandMap);
 		return mv;
 	}
 	

@@ -238,7 +238,7 @@
 						// 마커가 지도 위에 표시되도록 설정합니다
 						marker.setMap(map);
 						
-						var iwContent = '<div style="padding:5px; height:auto;">'+infoContent+'<br><a href="http://map.daum.net/link/to/'+infoTitle+','+lat+','+lng+'" style="color:blue" target="_blank">가보고싶어! 어떻게가는지 알려줘!(Click)</a><br><img src="<c:url value="/resources/locationImgs/'+infoImage+'"/>" style="height:170px; width:200px"></div>', 
+						var iwContent = '<div style="padding:5px 2px; 5px; 2px;">'+infoContent+'<br><a href="http://map.daum.net/link/to/'+infoTitle+','+lat+','+lng+'" style="color:blue" target="_blank">가보고싶어! 어떻게가는지 알려줘!(Click)</a><br><img src="<c:url value="/resources/locationImgs/'+infoImage+'"/>" style="height:170px; width:200px"></div>', 
 					    iwPosition = new daum.maps.LatLng(lat, lng); //인포윈도우 표시 위치입니다
 			
 						// 인포윈도우(마커에 설명)를 생성합니다

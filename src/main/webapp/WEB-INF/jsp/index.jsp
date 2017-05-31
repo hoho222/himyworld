@@ -75,17 +75,17 @@
 		<div class="testimonial-grids">
 			<div class="testimonial-grid">
 				<a href="#"><img src="<c:url value='/resources/images/developer.jpg'/>" title="developer" /></a>
-				<p>PM은 나야 나</p>
+				<p>PM</p>
 				<a href="#">KyungEun, CHOI</a>
 			</div>
 			<div class="testimonial-grid">
 				<a href="#"><img src="<c:url value='/resources/images/developer2.jpg'/>" title="developer2" /></a>
-				<p>개발자도 나야 나!!</p>
+				<p>Developer</p>
 				<a href="#">KyungEun, CHOI</a>
 			</div>
 			<div class="testimonial-grid">
 				<a href="#"><img src="<c:url value='/resources/images/designer.png'/>" title="designer" /></a>
-				<p>디자인은 W3layouts.com</p>
+				<p>Template</p>
 				<a href="#">W3layouts.com</a>
 			</div>
 			<div class="clear"> </div>

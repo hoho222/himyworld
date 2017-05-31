@@ -13,6 +13,7 @@
 
 <script type="text/javascript">
 function validSubmit() {
+	var f = document.joinFrm;
 	var id = $("#id");
 	var name = $("#name");
 	var password = $("#password");
@@ -93,9 +94,7 @@ function validSubmit() {
     	return false;
     }
 	
-	if(birthdate.val() != "" && id.val() != "" && password.val() != "" && passwordRe.val() != "" && name.val() != ""){
-		alert("회원가입 완료!");
-	} else {
+	if(birthdate.val() == "" || id.val() == "" || password.val() == "" || passwordRe.val() == "" || name.val() == ""){
 		alert("공란이 있습니다. 모든 조건을 채워주세요.");
 		return false;
 	}
